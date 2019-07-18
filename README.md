@@ -1,100 +1,73 @@
-# LIFF Starter App
+# LINE Things Starter
 
-This is a small web application that demonstrates the basic functionality of the [LINE Front-end Framework (LIFF)](https://developers.line.me/en/docs/liff/overview/). 
+This repository contains sample codes for LINE Things Developer Trial.
 
-## Prerequisites
-* [A channel on the LINE Developers Console](https://developers.line.me/en/docs/liff/getting-started/) for your application.
-* [A channel access token](https://developers.line.me/en/docs/liff/getting-started/#preparing-channel-access-token)
-* A [Heroku account](https://www.heroku.com)
+LINE Things compatible device example firmware, LIFF app code and LINE bot code are included.
 
-## Deploying the application
+English | [日本語](README.ja.md)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/line/line-liff-starter)
+## Getting Started
 
-1. Click the above "Deploy to Heroku button".
-2. Fill in the required information on the "Create a New App" page in Heroku.
-3. Select Deploy app and confirm that your app is successfully deployed.
-4. Record the app URL (https://{Heroku app name}.herokuapp.com). You will set this URL when you add the app to LIFF.
+[LINE Things](https://developers.line.biz/en/docs/line-things/) is a platform that connects Bots and Web services together with IoT devices that are Bluetooth LE enabled.
 
-## Adding the starter app to LIFF
+To start developing for LINE Things using the example code and the sample firmware, the following steps are necessary.
 
-Add the app to LIFF. For more information, see [Adding a LIFF app](https://developers.line.me/en/docs/liff/registering-liff-apps/).
+### Installing the Firmware
 
-## Running the application
+To start development using the example firmwares, you will need a compatible Bluetooth LE enabled development board.
+Currently LINE Things Starter firmwares supports the following 6 development boards
 
-1. To run this application, host these files on a web server.
-2. Set your LIFF's entryUrl to point to index.html.
-3. Open your LIFF in the LINE app.
+- [LINE Things dev board](https://github.com/line/line-things-dev-board)
+- [Espressif ESP32-DevKitC](https://www.espressif.com/en/products/hardware/esp32-devkitc/overview)
+- [M5Stack （ESP32)](http://m5stack.com/)
+- [M5StickC](https://m5stack.com/products/stick-c)
+- [Adafruit Feather nRF52 Bluefruit LE - nRF52832](https://www.adafruit.com/product/3406)
+- [Adafruit Feather nRF52840 Express](https://www.adafruit.com/product/4062)
+- [BBC micro:bit](https://microbit.org/)
+- [Obniz](https://obniz.io/)
+- [Puck.js](https://www.puck-js.com/)
 
+Each firmware is located under `line-things-dev-board`, `esp32`, `m5stack`, `m5stick-c`,`nrf52`, `microbit`, `obniz` and `puckjs` respectively.
+For further details, please refer to the `README` file in each directory.
 
-## Trying it out
+### Enable LINE Things
 
-To open the LIFF app within the LINE app, follow the steps below.
+Please scan the following QR code with LINE to activate LINE Things.
 
-1. Tap `line://app/{liffId}` on the chat screen of the LINE app. `{liffId}` is the LIFF app ID returned to the API request to add the app to LIFF.
+![](https://developers.line.biz/media/line-things/qr_code-311f3503.png)
 
-2. Agree to grant the required permissions to the LIFF app.
+Upon turning the device on, a device with the name `LINE Things Starter (Default Firmware)` will be detected.
+Once the device is connected, the LIFF app can then be launched by selecting the device.
+Here you can test all the LIFF BLE functionalities of LINE Things.
 
-3. When opening the LIFF app, the following four buttons and the content of received information are displayed.
+## Developer Trial
 
-    - Open Window: Opens `https://line.me` in the in-app browser of the LINE app.
-    - Close Window: Closes the LIFF app.
-    - Get Access Token: Gets the current user's access token.
-    - Get Profile: Gets the current user's profile.
-    - Send Messages: Sends a sample message on behalf of the user if the LIFF app is opened in the chat screen.
+Developers can try the functions of LINE Things for free with the [LINE Things Developer Trial](https://developers.line.biz/en/docs/line-things/about-line-things-trial/).
 
+Documentation regarding firmware development and LIFF functions for LINE Things are published at [LINE Developers - LINE Things](https://developers.line.biz/en/docs/line-things/).
 
-For API calls associated with the buttons, see [Calling the LIFF API](https://developers.line.me/en/docs/liff/developing-liff-apps#calling-liff-api). For the received information, see [Initializing the LIFF app](https://developers.line.me/en/docs/liff/developing-liff-apps#initializing-liff-app).
+### Product registration and creating LIFF app
 
-## Checking logs
+In order to develop for LINE Things using Developer Trial, you will need to create a LIFF app, register a trial product, and issue a GATT Service UUID.
+For additional details, please visit the [LINE Developers](https://developers.line.biz/en/docs/line-things/) site.
 
-To get more information, you can check the logs of your app using [Heroku CLI][heroku-cli].
+### Automatic communication
 
-1. Log in to Heroku from the command line.
+LINE bot sample code for the automatic communication feature is also included in `bot/app.py`.
+You can deploy it to Heroku from following button.
 
-    ```shell
-    $ heroku login
-    ```
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-1. Check the logs.
+In order to develop automatic communication, you have to setup webhook for LINE Messaging API and register "Scenario set" by LINE Things REST API.
+Please see [bot/README.md](bot/README.md) for details.
 
-    ```shell
-    $ heroku logs --app {Heroku app name} --tail
-    ```
+### References
 
-## Downloading and making changes to the starter app
+Please refer to the following step by step article from LINE Engineering Blog.
 
-You can download the starter app to your local machine to test and make changes for yourself. You can then deploy the app to a web server of your choice. Here, we'll look at how to make and deploy changes to the Heroku app you created in the previous step.
+- [Trying out LINE’s IoT Platform through LINE Things Developer Trial](https://engineering.linecorp.com/en/blog/line-things-developer-trial/)
+- [LINE Things automatic communication](https://engineering.linecorp.com/en/blog/line-things-automatic-communication/)
 
-1. Make sure you have the following installed
-    - [Git](https://git-scm.com/)
+## License
 
-1. Clone the [line-liff-starter](https://github.com/line/line-liff-starter) GitHub repository.
-
-    ```shell
-    git clone https://github.com/line/line-liff-starter.git
-    ```
-
-1. `cd` into your Git directory.
-1. Add a remote for Heroku to your local repository.
-
-    ```shell
-    $ heroku git:remote -a {Heroku app name}
-    ```
-
-1. Make edits and commit changes (optional).
-
-    ```shell
-    $ git add .
-    $ git commit -m "First commit"
-    ```
-
-1. Push changes to Heroku master.
-
-    ```shell
-    $ git push heroku master
-
-
-[console]: /console/ 
-[heroku]: https://www.heroku.com/
-[heroku-cli]: https://devcenter.heroku.com/articles/heroku-cli
+LINE Things Starter code is licensed under Creative Commons License [CC0](http://creativecommons.org/publicdomain/zero/1.0/).
